@@ -11,5 +11,5 @@ export interface ItemDetail {
   gold: Gold;
   tags: string[];
   maps: Record<string, boolean>;
-  stats: Record<string, number>; // 아이템마다 적용되는 스탯은 가변적이므로 Record<string, number>로 표현
+  stats: Record<string, number>;
 }
