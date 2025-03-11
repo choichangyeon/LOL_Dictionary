@@ -1,4 +1,4 @@
-import { Image } from "./Image";
+import { Image } from "../common/Image";
 import { Info } from "./Info";
 import { Skin } from "./Skin";
 import { Spell } from "./Spell";
