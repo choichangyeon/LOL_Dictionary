@@ -1,4 +1,4 @@
-import { Champion } from "./champion/Champion";
+import { Champion } from "@/types/champion/Champion";
 
 export interface ChampionsData {
   type: string;

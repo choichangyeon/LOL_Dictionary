@@ -1,9 +1,9 @@
-import { Image } from "../common/Image";
-import { Info } from "./Info";
-import { Skin } from "./Skin";
-import { Spell } from "./Spell";
-import { Passive } from "./Passive";
-import { Stats } from "./Stats";
+import { Image } from "@/types/common/Image";
+import { Info } from "@/types/champion/Info";
+import { Skin } from "@/types/champion/Skin";
+import { Spell } from "@/types/champion/Spell";
+import { Passive } from "@/types/champion/Passive";
+import { Stats } from "@/types/champion/Stats";
 
 export interface Champion {
   id: string;

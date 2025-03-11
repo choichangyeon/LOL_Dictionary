@@ -1,5 +1,5 @@
-import { BasicItem } from "./item/BasicItem";
-import { ItemDetail } from "./item/ItemDetail";
+import { BasicItem } from "@/types/item/BasicItem";
+import { ItemDetail } from "@/types/item/ItemDetail";
 
 export interface ItemsData {
   type: string;

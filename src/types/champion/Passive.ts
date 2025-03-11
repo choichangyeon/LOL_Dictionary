@@ -1,4 +1,4 @@
-import { Image } from "../common/Image";
+import { Image } from "@/types/common/Image";
 
 export interface Passive {
   name: string;

@@ -1,5 +1,5 @@
-import { Image } from "../common/Image";
-import { Gold } from "./Gold";
+import { Image } from "@/types/common/Image";
+import { Gold } from "@/types/item/Gold";
 
 export interface ItemDetail {
   name: string;

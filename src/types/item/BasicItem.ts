@@ -1,6 +1,6 @@
-import { BasicStats } from "./BasicStats";
-import { Gold } from "./Gold";
-import { Rune } from "./Rune";
+import { BasicStats } from "@/types/item/BasicStats";
+import { Gold } from "@/types/item/Gold";
+import { Rune } from "@/types/item/Rune";
 
 export interface BasicItem {
   name: string;

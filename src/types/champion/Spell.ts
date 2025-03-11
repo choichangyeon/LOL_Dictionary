@@ -1,5 +1,5 @@
-import { Image } from "../common/Image";
-import { LevelTip } from "./LevelTip";
+import { Image } from "@/types/common/Image";
+import { LevelTip } from "@/types/champion/LevelTip";
 
 export interface Spell {
   id: string;
