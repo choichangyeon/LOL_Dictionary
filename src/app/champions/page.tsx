@@ -13,6 +13,7 @@ const ChampionsPage = async () => {
               name={champion.name}
               title={champion.title}
               image={champion.image.full}
+              id={champion.key}
             />
           </div>
         );
