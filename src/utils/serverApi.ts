@@ -20,7 +20,7 @@ export const getChampionsData = async (): Promise<Champion[]> => {
 };
 
 export const getItemsData = async (): Promise<ItemDetail[]> => {
-  const res = await fetch(LOL_ITEMS_JSON_URL);
+  const res = await fetch(LOL_ITEMS_JSON_URL, { cache: "force-cache" });
   const data: ItemsData = await res.json();
   const items: ItemDetail[] = Object.values(data.data);
 
