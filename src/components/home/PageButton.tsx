@@ -10,7 +10,10 @@ const PageButton = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <Link href={path}>
+    <Link
+      className="m-[20px] flex flex-col items-center justify-center"
+      href={path}
+    >
       {children}
       <div>{title}</div>
     </Link>
