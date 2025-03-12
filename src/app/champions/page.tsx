@@ -9,12 +9,7 @@ const ChampionsPage = async () => {
       {champions.map((champion) => {
         return (
           <div key={champion.key}>
-            <ChampionCard
-              name={champion.name}
-              title={champion.title}
-              image={champion.image.full}
-              id={champion.key}
-            />
+            <ChampionCard champion={champion} />
           </div>
         );
       })}
