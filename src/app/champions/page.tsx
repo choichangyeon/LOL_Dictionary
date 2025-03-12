@@ -1,5 +1,6 @@
 import { Champion } from "@/types/champion/Champion";
 import { ChampionsData } from "@/types/ChampionsData";
+import ChampionCard from "@components/champions/ChampionCard";
 
 const ChampionsPage = async () => {
   const res = await fetch("http://localhost:3000/api/champions", {
@@ -10,12 +11,15 @@ const ChampionsPage = async () => {
   const champions: Champion[] = Object.values(data.data);
 
   return (
-    <div>
-      ChampionsPage
+    <div className="flex flex-row flex-wrap items-center justify-evenly">
       {champions.map((champion) => {
         return (
           <div key={champion.key}>
-            <div>{champion.name}</div>
+            <ChampionCard
+              name={champion.name}
+              title={champion.title}
+              image={champion.image.full}
+            />
           </div>
         );
       })}
