@@ -6,7 +6,7 @@ export const LOL_CHAMPION_SPLASH_IMG_URL: string =
 export const LOL_IMG_URL: string =
   "https://ddragon.leagueoflegends.com/cdn/15.5.1/img/";
 
-export const IMG_TYPE: object = {
+export const IMG_TYPE: Record<string, string> = {
   CHAMPION: "champion/",
   PASSIVE: "passive/",
   SPELL: "spell/",
