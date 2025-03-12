@@ -1,12 +1,14 @@
 import { Champion } from "@/types/champion/Champion";
 import { ChampionsData } from "@/types/ChampionsData";
+import { LOL_CHAMPIONS_JSON_URL } from "@/constants/RiotDataURL";
 import ChampionCard from "@components/champions/ChampionCard";
 
 const ChampionsPage = async () => {
-  const res = await fetch("http://localhost:3000/api/champions", {
-    next: { revalidate: 86400 },
+  const res = await fetch(LOL_CHAMPIONS_JSON_URL, {
+    next: {
+      revalidate: 86400,
+    },
   });
-
   const data: ChampionsData = await res.json();
   const champions: Champion[] = Object.values(data.data);
 
