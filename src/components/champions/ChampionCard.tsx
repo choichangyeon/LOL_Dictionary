@@ -1,4 +1,4 @@
-import { IMG_TYPE, LOL_IMG_URL } from "@/app/api/RiotImgAPI";
+import { IMG_TYPE, LOL_IMG_URL } from "@/constants/RiotImgURL";
 import React from "react";
 import Image from "next/image";
 
