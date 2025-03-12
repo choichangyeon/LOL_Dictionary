@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="flex h-[80px] w-[full] min-w-[500px] flex-row items-center justify-around bg-green-300 text-[25px]">
+        <header className="flex h-[80px] w-[full] min-w-[500px] flex-row items-center justify-around bg-green-300 text-[25px] font-bold">
           <Link href={"/"}>홈</Link>
           <Link href={"/champions"}>챔피언 목록</Link>
           <Link href={"/items"}>아이템 목록</Link>
