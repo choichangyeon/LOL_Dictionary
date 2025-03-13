@@ -3,7 +3,7 @@ import { ChampionsData } from "@/types/ChampionsData";
 import { ItemDetail } from "@/types/item/ItemDetail";
 import { ItemsData } from "@/types/ItemsData";
 import { LOL_REQUEST_BASE_URL } from "@constants/RiotDataURL";
-import { formatUrl } from "./formatValue";
+import { formatUrl } from "@utils/formatValue";
 
 // 모든 챔피언 GET 요청
 export const getChampionsData = async (): Promise<Record<string, Champion>> => {
