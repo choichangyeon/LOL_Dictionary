@@ -1,14 +1,15 @@
 import { IMG_TYPE } from "@constants/RiotImgURL";
+import { SKILL_SET } from "@constants/SkillSet";
 import { Spell } from "@/types/champion/Spell";
+import { formatText } from "@utils/formatValue";
 import Image from "next/image";
-import { formatLastChar } from "@/utils/formatValue";
-import { formatText } from "../../utils/formatValue";
 
 const SpellSection = ({
   spell,
   url,
-}: Readonly<{ spell: Spell; url: string }>) => {
-  const skillSet = formatLastChar(spell.id);
+  index,
+}: Readonly<{ spell: Spell; url: string; index: number }>) => {
+  const skillSet = SKILL_SET[index];
   return (
     <section>
       <Image

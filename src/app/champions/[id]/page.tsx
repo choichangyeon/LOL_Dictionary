@@ -31,8 +31,10 @@ const ChampionDetailPage = async ({ params }: Props) => {
         />
       </header>
       <PassiveSection passive={champion.passive!} url={url} />
-      {champion.spells!.map((spell) => {
-        return <SpellSection key={spell.id} spell={spell} url={url} />;
+      {champion.spells!.map((spell, idx) => {
+        return (
+          <SpellSection key={spell.id} spell={spell} url={url} index={idx} />
+        );
       })}
     </main>
   );
