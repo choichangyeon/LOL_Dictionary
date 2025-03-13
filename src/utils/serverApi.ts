@@ -2,11 +2,7 @@ import { Champion } from "@/types/champion/Champion";
 import { ChampionsData } from "@/types/ChampionsData";
 import { ItemDetail } from "@/types/item/ItemDetail";
 import { ItemsData } from "@/types/ItemsData";
-import {
-  LOL_CHAMPIONS_JSON_URL,
-  LOL_ITEMS_JSON_URL,
-  LOL_REQUEST_BASE_URL,
-} from "@constants/RiotDataURL";
+import { LOL_REQUEST_BASE_URL } from "@constants/RiotDataURL";
 import { formatUrl } from "./formatValue";
 
 // 모든 챔피언 GET 요청
