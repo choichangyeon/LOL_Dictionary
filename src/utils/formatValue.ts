@@ -4,6 +4,11 @@ export const formatText = (originalText: string): string => {
   return originalText.replace(/<\/?[^>]+>/g, "").trim();
 };
 
+export const formatLastChar = (str: string): string => {
+  if (!str) return "";
+  return str[str.length - 1];
+};
+
 export const formatUrl = async (
   BASE_URL: string,
   type: string,
