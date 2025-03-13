@@ -17,7 +17,7 @@ export const formatUrl = async (
       return `${BASE_URL}${release_version}/data${REGION[region!]}`;
 
     case FORMAT_TYPE.IMG:
-      return `${BASE_URL}${release_version}/img`;
+      return `${BASE_URL}${release_version}/img/`;
 
     default:
       return "";
