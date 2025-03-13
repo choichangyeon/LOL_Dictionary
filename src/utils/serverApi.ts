@@ -16,8 +16,6 @@ export const getChampionsData = async (): Promise<Record<string, Champion>> => {
   const data: ChampionsData = await res.json();
   const champions: Record<string, Champion> = data.data;
 
-  console.log(champions);
-
   return champions;
 };
 
