@@ -1,11 +1,13 @@
-import { IMG_TYPE, LOL_IMG_URL } from "@/constants/RiotImgURL";
+import { IMG_TYPE } from "@/constants/RiotImgURL";
 import React from "react";
 import Image from "next/image";
 import { ItemDetail } from "@/types/item/ItemDetail";
-import { formatText } from "../../utils/formatValue";
+import { formatText, formatUrl } from "../../utils/formatValue";
+import { LOL_REQUEST_BASE_URL } from "@/constants/RiotDataURL";
 
-const ItemCard = ({ item }: Readonly<{ item: ItemDetail }>) => {
-  const imgUrl = LOL_IMG_URL + IMG_TYPE.ITEM + item.image.full;
+const ItemCard = async ({ item }: Readonly<{ item: ItemDetail }>) => {
+  const url = await formatUrl(LOL_REQUEST_BASE_URL, "img");
+  const imgUrl = url + IMG_TYPE.ITEM + item.image.full;
   return (
     <div className="mx-[20px] my-[10px] flex h-[200px] w-[300px] flex-col items-center justify-center border-[3px] bg-green-500">
       <Image src={imgUrl} width={100} height={100} alt={item.name}></Image>
