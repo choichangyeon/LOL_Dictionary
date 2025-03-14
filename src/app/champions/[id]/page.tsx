@@ -5,6 +5,7 @@ import { getChampionDataById } from "@utils/serverApi";
 import Image from "next/image";
 import SpellSection from "@components/champions/SpellSection";
 import PassiveSection from "@components/champions/PassiveSection";
+import { Metadata } from "next";
 
 type Props = {
   params: {
@@ -12,6 +13,27 @@ type Props = {
   };
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const champion = await getChampionDataById(params.id);
+  const url = await formatUrl(LOL_REQUEST_BASE_URL, "img");
+  const championImgUrl = url + IMG_TYPE.CHAMPION + champion.image.full;
+
+  return {
+    title: champion.name,
+    description: champion.blurb,
+    openGraph: {
+      title: champion.name,
+      description: champion.blurb,
+      images: [
+        {
+          url: championImgUrl,
+          width: 100,
+          height: 100,
+        },
+      ],
+    },
+  };
+}
 const ChampionDetailPage = async ({ params }: Props) => {
   const champion = await getChampionDataById(params.id);
   const url = await formatUrl(LOL_REQUEST_BASE_URL, "img");
