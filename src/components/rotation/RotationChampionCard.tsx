@@ -1,12 +1,12 @@
-import { IMG_TYPE } from "@constants/RiotImgURL";
 import Image from "next/image";
 import Link from "next/link";
 import { Champion } from "@/types/champion/Champion";
-import { LOL_REQUEST_BASE_URL } from "@constants/RiotDataURL";
-import { formatUrl } from "@utils/formatValue";
+import { IMG_TYPE } from "@/constants/RiotImgURL";
 
-const ChampionCard = async ({ champion }: Readonly<{ champion: Champion }>) => {
-  const url = await formatUrl(LOL_REQUEST_BASE_URL, "img");
+const RotationChampionCard = ({
+  champion,
+  url,
+}: Readonly<{ champion: Champion; url: string }>) => {
   const imgUrl = url + IMG_TYPE.CHAMPION + champion.image.full;
   return (
     <Link
@@ -20,4 +20,4 @@ const ChampionCard = async ({ champion }: Readonly<{ champion: Champion }>) => {
   );
 };
 
-export default ChampionCard;
+export default RotationChampionCard;

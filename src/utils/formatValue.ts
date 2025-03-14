@@ -1,4 +1,5 @@
-import { LOL_REQUEST_VERSION_URL, REGION } from "@/constants/RiotDataURL";
+import { REGION } from "@/constants/RiotDataURL";
+import { getVersion } from "./serverApi";
 
 export const formatText = (originalText: string): string => {
   return originalText.replace(/<\/?[^>]+>/g, "").trim();
@@ -14,9 +15,8 @@ export const formatUrl = async (
   type: string,
   region?: keyof typeof REGION,
 ): Promise<string> => {
-  const res = await fetch(LOL_REQUEST_VERSION_URL);
-  const data = await res.json();
-  const release_version = data[0];
+  const release_version = await getVersion();
+
   switch (type) {
     case FORMAT_TYPE.DATA:
       return `${BASE_URL}${release_version}/data${REGION[region!]}`;
