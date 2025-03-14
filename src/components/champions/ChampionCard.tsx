@@ -1,5 +1,4 @@
 import { IMG_TYPE } from "@constants/RiotImgURL";
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Champion } from "@/types/champion/Champion";
