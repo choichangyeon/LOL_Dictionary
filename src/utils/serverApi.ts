@@ -1,12 +1,16 @@
 import { Champion } from "@/types/champion/Champion";
 import { ChampionsData } from "@/types/ChampionsData";
+import { ChampionsRotationData } from "@/types/ChampionsRotationData";
 import { ItemDetail } from "@/types/item/ItemDetail";
 import { ItemsData } from "@/types/ItemsData";
-import { LOL_REQUEST_BASE_URL } from "@constants/RiotDataURL";
+import {
+  LOL_REQUEST_BASE_URL,
+  LOL_REQUEST_VERSION_URL,
+} from "@constants/RiotDataURL";
 import { formatUrl } from "@utils/formatValue";
 
 // 모든 챔피언 GET 요청
-export const getChampionsData = async (): Promise<Record<string, Champion>> => {
+export const getChampionsData = async (): Promise<Champion[]> => {
   const url = await formatUrl(LOL_REQUEST_BASE_URL, "data", "KOR");
   const res = await fetch(`${url}/champion.json`, {
     next: {
@@ -14,7 +18,7 @@ export const getChampionsData = async (): Promise<Record<string, Champion>> => {
     },
   });
   const data: ChampionsData = await res.json();
-  const champions: Record<string, Champion> = data.data;
+  const champions: Champion[] = Object.values(data.data);
 
   return champions;
 };
@@ -37,4 +41,13 @@ export const getItemsData = async (): Promise<Record<string, ItemDetail>> => {
   const items: Record<string, ItemDetail> = data.data;
 
   return items;
+};
+
+// 최신 version 정보 GET
+export const getVersion = async (): Promise<string> => {
+  const res = await fetch(LOL_REQUEST_VERSION_URL);
+  const data = await res.json();
+  const release_version = data[0];
+
+  return release_version;
 };

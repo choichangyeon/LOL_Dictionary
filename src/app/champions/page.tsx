@@ -6,9 +6,9 @@ const ChampionsPage = async () => {
 
   return (
     <div className="flex flex-row flex-wrap items-center justify-evenly">
-      {Object.entries(champions).map(([key, champion]) => {
+      {champions.map((champion) => {
         return (
-          <div key={key}>
+          <div key={champion.key}>
             <ChampionCard champion={champion} />
           </div>
         );
