@@ -1,16 +1,17 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getChampionsData } from "@utils/serverApi";
 import { useRotateChampions } from "@hooks/queries";
 import { Champion } from "@/types/champion/Champion";
 import RotationChampionCard from "@components/rotation/RotationChampionCard";
-// import ChampionCard from "@components/champions/ChampionCard";
-// import ChampionList from "@components/rotation/ChampionList";
+import { LOL_REQUEST_BASE_URL } from "@constants/RiotDataURL";
+import { formatUrl } from "@utils/formatValue";
 
 const RotationSection = () => {
   const { data: rotationChampions, isPending, isError } = useRotateChampions();
   const [champions, setChampions] = useState<Champion[]>([]);
+  const [url, setUrl] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,10 @@ const RotationSection = () => {
         freeIdsSet.has(champion.key),
       );
 
+      const url = await formatUrl(LOL_REQUEST_BASE_URL, "img");
+
       setChampions(championsInRotation);
+      setUrl(url);
     };
     fetchData();
   }, [rotationChampions]);
@@ -36,18 +40,15 @@ const RotationSection = () => {
   }
 
   return (
-    // <ChampionList champions={champions} />
-    <Suspense>
-      <div className="flex flex-row flex-wrap items-center justify-evenly">
-        {champions.map((champion) => {
-          return (
-            <div key={champion.key}>
-              <RotationChampionCard champion={champion} imgUrl="" />
-            </div>
-          );
-        })}
-      </div>
-    </Suspense>
+    <div className="flex flex-row flex-wrap items-center justify-evenly">
+      {champions.map((champion) => {
+        return (
+          <div key={champion.key}>
+            <RotationChampionCard champion={champion} url={url} />
+          </div>
+        );
+      })}
+    </div>
   );
 };
 
