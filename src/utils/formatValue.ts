@@ -1,5 +1,26 @@
 import { REGION } from "@/constants/RiotDataURL";
-import { getVersion } from "./serverApi";
+import { Info } from "@/types/champion/Info";
+import { getVersion } from "@utils/serverApi";
+
+export const formatChampionTags = (tags: string[]): string[] => {
+  return tags.map((tag) => FORMAT_TAG_NAME[tag] || tag);
+};
+
+export const formatChampionTitle = (title: string): string => {
+  return title
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
+export const formatChampionInfo = (info: Info): Info => {
+  const attack = (info.attack / 10) * 100;
+  const defense = (info.defense / 10) * 100;
+  const magic = (info.magic / 10) * 100;
+  const difficulty = (info.difficulty / 10) * 100;
+
+  return { attack, defense, magic, difficulty };
+};
 
 export const formatText = (originalText: string): string => {
   return originalText.replace(/<\/?[^>]+>/g, "").trim();
@@ -32,4 +53,13 @@ export const formatUrl = async (
 const FORMAT_TYPE: Record<string, string> = {
   DATA: "data",
   IMG: "img",
+};
+
+const FORMAT_TAG_NAME: Record<string, string> = {
+  Fighter: "전사",
+  Mage: "마법사",
+  Assassin: "암살자",
+  Marksman: "원거리 딜러",
+  Tank: "탱커",
+  Support: "서포터",
 };

@@ -32,7 +32,7 @@ const RotationSection = () => {
   }, [rotationChampions]);
 
   if (isPending || champions.length === 0) {
-    return <div>isPending...</div>;
+    return <div className="flex items-center justify-center">isPending...</div>;
   }
 
   if (isError) {
@@ -40,7 +40,7 @@ const RotationSection = () => {
   }
 
   return (
-    <div className="flex flex-row flex-wrap items-center justify-evenly">
+    <div className="flex flex-row flex-wrap items-center justify-center gap-[25px]">
       {champions.map((champion) => {
         return (
           <div key={champion.key}>
