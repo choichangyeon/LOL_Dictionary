@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@app/globals.css";
 import Link from "next/link";
 import Provider from "@app/provider";
+import { Navigation } from "@components/Navigation";
 
 export const metadata: Metadata = {
   title: "LOL 백과사전",
@@ -29,15 +30,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <header className="flex h-[80px] w-full min-w-[500px] flex-row items-center justify-around bg-green-300 text-[25px] font-bold">
-          <Link href={"/"}>홈</Link>
-          <Link href={"/champions"}>챔피언 목록</Link>
-          <Link href={"/items"}>아이템 목록</Link>
-          <Link href={"/rotation"}>챔피언 로테이션</Link>
+    <html lang="en" className="dark">
+      <body className="min-h-screen bg-slate-950 text-slate-100">
+        <header className="sticky top-0 z-50 flex h-[80px] w-full min-w-[500px] flex-row items-center justify-around border-b border-slate-800 bg-slate-900 text-[20px] font-bold shadow-md">
+          <Navigation />
         </header>
-        <main className="w-full">
+        <main className="mx-auto w-full max-w-[1400px] px-4 py-6">
           <Provider>{children}</Provider>
         </main>
       </body>
