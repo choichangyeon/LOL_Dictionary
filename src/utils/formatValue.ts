@@ -2,6 +2,13 @@ import { REGION } from "@/constants/RiotDataURL";
 import { Info } from "@/types/champion/Info";
 import { getVersion } from "@utils/serverApi";
 
+export const formatTitle = (title: string): string => {
+  return title
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+
 export const formatChampionInfo = (info: Info): Info => {
   const attack = (info.attack / 10) * 100;
   const defense = (info.defense / 10) * 100;
