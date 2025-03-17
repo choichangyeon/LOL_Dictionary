@@ -3,7 +3,12 @@ import Link from "next/link";
 import { IMG_TYPE } from "@constants/RiotImgURL";
 import { Champion } from "@/types/champion/Champion";
 import { LOL_REQUEST_BASE_URL } from "@constants/RiotDataURL";
-import { formatUrl } from "@utils/formatValue";
+import {
+  formatChampionInfo,
+  formatChampionTags,
+  formatChampionTitle,
+  formatUrl,
+} from "@utils/formatValue";
 import { Card, CardContent } from "@components/ui/card";
 import { Badge } from "@components/ui/badge";
 import { Shield, Sword, Wand, BarChart2 } from "lucide-react";
@@ -11,38 +16,26 @@ import { Shield, Sword, Wand, BarChart2 } from "lucide-react";
 const ChampionCard = async ({ champion }: Readonly<{ champion: Champion }>) => {
   const url = await formatUrl(LOL_REQUEST_BASE_URL, "img");
   const imgUrl = url + IMG_TYPE.CHAMPION + champion.image.full;
-
-  // Format the champion title to capitalize first letter of each word
-  const formattedTitle = champion.title
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-
-  // Calculate stat percentages for the stat bars
-  const attackPercent = (champion.info.attack / 10) * 100;
-  const defensePercent = (champion.info.defense / 10) * 100;
-  const magicPercent = (champion.info.magic / 10) * 100;
-  const difficultyPercent = (champion.info.difficulty / 10) * 100;
+  const formattedTitle = formatChampionTitle(champion.title);
+  const {
+    attack: attackPercent,
+    defense: defensePercent,
+    magic: magicPercent,
+    difficulty: difficultyPercent,
+  } = formatChampionInfo(champion.info);
+  const formattedTags = formatChampionTags(champion.tags);
 
   return (
-    // <Link
-    //   href={`/champions/${champion.id}`}
-    //   className="mx-[20px] my-[10px] flex h-[200px] w-[300px] flex-col items-center justify-center border-[3px] bg-green-500"
-    // >
-    //   <Image src={imgUrl} width={100} height={100} alt={champion.name}></Image>
-    //   <p>{champion.name}</p>
-    //   <p>{champion.title}</p>
-    // </Link>
     <Link
       href={`/champions/${champion.id}`}
-      className="block transition-transform duration-300 hover:scale-105"
+      className="m-[10px] block transition-transform duration-300 hover:scale-105"
     >
-      <Card className="group relative h-[320px] w-[280px] overflow-hidden border-2 bg-gradient-to-b from-slate-900 to-slate-800 text-white shadow-lg">
+      <Card className="group relative h-[400px] w-[280px] overflow-hidden border-2 bg-gradient-to-b from-slate-900 to-slate-800 text-white shadow-lg">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-70" />
 
         <CardContent className="relative z-10 flex h-full flex-col p-4">
           {/* Champion Image */}
-          <div className="mx-auto mt-2 mb-2 h-[120px] w-[120px] overflow-hidden rounded-full border-2 border-yellow-500">
+          <div className="mx-auto mt-2 mb-2 h-[120px] w-[120px]">
             <Image
               src={imgUrl}
               width={120}
@@ -57,12 +50,14 @@ const ChampionCard = async ({ champion }: Readonly<{ champion: Champion }>) => {
             <h2 className="text-xl font-bold text-yellow-400">
               {champion.name}
             </h2>
-            <p className="text-sm text-gray-300 italic">{formattedTitle}</p>
+            <p className="text-sm text-gray-300 italic opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              {formattedTitle}
+            </p>
           </div>
 
           {/* Tags */}
           <div className="mb-3 flex flex-wrap justify-center gap-1">
-            {champion.tags.map((tag) => (
+            {formattedTags.map((tag) => (
               <Badge
                 key={tag}
                 variant="outline"
@@ -107,10 +102,6 @@ const ChampionCard = async ({ champion }: Readonly<{ champion: Champion }>) => {
                   style={{ width: `${difficultyPercent}%` }}
                 />
               </div>
-            </div>
-
-            <div className="mt-2 text-center text-xs text-gray-400">
-              {champion.partype}
             </div>
           </div>
         </CardContent>
