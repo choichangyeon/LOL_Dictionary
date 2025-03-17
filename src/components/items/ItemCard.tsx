@@ -46,9 +46,12 @@ const ItemCard = async ({ item }: Readonly<{ item: ItemDetail }>) => {
 
         {/* Item Price (if available) */}
         {item.gold && (
-          <div className="mt-2 flex items-center gap-1 text-sm text-yellow-300">
+          <div className="mt-2 flex items-center gap-1 text-[20px] text-yellow-300">
             <span>{item.gold.total}</span>
-            <span className="text-xs">gold</span>
+            <span className="text-[16px]">gold</span>
+            <div className="text-[12px] text-red-300">
+              <span>({item.gold.sell} gold)</span>
+            </div>
           </div>
         )}
       </CardContent>
