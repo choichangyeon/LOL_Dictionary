@@ -1,5 +1,15 @@
 import { REGION } from "@/constants/RiotDataURL";
-import { getVersion } from "./serverApi";
+import { Info } from "@/types/champion/Info";
+import { getVersion } from "@utils/serverApi";
+
+export const formatChampionInfo = (info: Info): Info => {
+  const attack = (info.attack / 10) * 100;
+  const defense = (info.defense / 10) * 100;
+  const magic = (info.magic / 10) * 100;
+  const difficulty = (info.difficulty / 10) * 100;
+
+  return { attack, defense, magic, difficulty };
+};
 
 export const formatText = (originalText: string): string => {
   return originalText.replace(/<\/?[^>]+>/g, "").trim();
