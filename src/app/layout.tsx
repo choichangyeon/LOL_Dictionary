@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@app/globals.css";
-import Link from "next/link";
 import Provider from "@app/provider";
 import { Navigation } from "@components/Navigation";
 
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "LOL 백과사전",
     description: "최신 LOL 정보와 업데이트를 확인하세요.",
-    url: "http://localhost:3000",
+    url: "https://lol-dictionary.vercel.app/",
     siteName: "LOL 백과사전",
     // images: [
     //   {
