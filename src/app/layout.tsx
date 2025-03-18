@@ -6,18 +6,14 @@ import { Navigation } from "@components/Navigation";
 export const metadata: Metadata = {
   title: "LOL 백과사전",
   description: "최신 LOL 정보와 업데이트를 확인하는 LOL 백과사전입니다.",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "LOL 백과사전",
     description: "최신 LOL 정보와 업데이트를 확인하세요.",
     url: "https://lol-dictionary.vercel.app/",
     siteName: "LOL 백과사전",
-    // images: [
-    //   {
-    //     url: "https://your-domain.com/og-image.jpg",
-    //     width: 800,
-    //     height: 600,
-    //   },
-    // ],
     locale: "ko_KR",
     type: "website",
   },
