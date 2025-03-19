@@ -112,3 +112,7 @@
 <h2 align="left">🚨 트러블 슈팅 & 회고록</h2>
 
 ###
+
+#### [SSR VS CSR ...?](https://velog.io/@changyon99/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85-SSR-VS-CSR)
+
+###
